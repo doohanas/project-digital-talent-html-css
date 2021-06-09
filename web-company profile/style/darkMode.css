@@ -1,4 +1,4 @@
-#toggleMode > label {
+label {
   display: flex;
   flex-direction: column;
 }
@@ -6,10 +6,7 @@
 #toggleMode > .textNightMode {
   margin-left: 10px;
   font-size: 0.85em;
-}
-
-#toggleMode {
-  padding-right: 50px;
+  position: relative;
 }
 
 #toggleMode > input[type="checkbox"] {
@@ -19,12 +16,12 @@
 }
 
 .check {
-  position: static;
+  position: relative;
   display: block;
   width: 40px;
   height: 20px;
   margin-left: 35px;
-  background: #25252a;
+  background: #444444;
   cursor: pointer;
   border-radius: 20px;
   overflow: hidden;
@@ -34,4 +31,34 @@
 input[type="checkbox"]:checked ~ .check {
   background-color: #fff;
   box-shadow: 0 0 0 9000px #444444;
+}
+
+.check::before {
+  content: "";
+  top: 2px;
+  left: 2px;
+  position: absolute;
+  background: #fff;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+input[type="checkbox"]:checked ~ .check::before {
+  transform: translateX(-50px);
+}
+.check::after {
+  content: "";
+  top: 2px;
+  right: 2px;
+  position: absolute;
+  background: #444444;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transition: 0.5s;
+  transform: translateX(50px);
+}
+input[type="checkbox"]:checked ~ .check::after {
+  transform: translateX(0px);
 }
